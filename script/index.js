@@ -14,24 +14,67 @@ function getElement(id) {
 //     const cardContainer = getElement("card-container");
 //     const newDiv = document.createElement("div")
 //     newDiv.innerHTML = `
-//     <div class="flex justify-between items-center p-4 mt-5">
-//                         <img src="./assets/kitchen-1.png" alt="" class="w-10">
-//                         <div>
-//                             <h3 class="font-bold">${title}</h3>
-//                             <p class="text-gray-500">${price} tk</p>
-//                         </div>
-//                     </div>
-//     `
-//     cardContainer.appendChild(newDiv);
+    // <div class="flex justify-between items-center p-4 mt-5">
+    //                     <img src="./assets/kitchen-1.png" alt="" class="w-10">
+    //                     <div>
+    //                         <h3 class="font-bold">${title}</h3>
+    //                         <p class="text-gray-500">${price} tk</p>
+    //                     </div>
+    //                 </div>
+    // `
+    // cardContainer.appendChild(newDiv);
 // })
 
 
 // traversing 
-const addCardBtns=document.getElementsByClassName("add-to-card-btn");
-for(const btn of addCardBtns){
-    btn.addEventListener("click",function(){
+// const addCardBtns=document.getElementsByClassName("add-to-card-btn");
+// for(const btn of addCardBtns){
+//     btn.addEventListener("click",function(){
+    //     const ImgElement=btn.parentNode.parentNode.children[0].children[0].src;
+    //     const titleElement=btn.parentNode.children[0].innerText;
+        
+
+
+    //     const priceElement=btn.parentNode.children[1].children[0].innerText;
+        
+
+    //     const price=getElement("main-price").innerText;
+    //     const currentPrice=Number(price)+Number(priceElement);
+    //     getElement("main-price").innerText=currentPrice;
+        
+    //     const totalItem=getElement("total-item").innerText
+    //     let finalItem=Number(totalItem)+1;
+    //     getElement("total-item").innerText=finalItem;
+
+    //     const cardContainer=getElement("card-container");
+    //     const newDiv=document.createElement("div");
+    //     newDiv.innerHTML=`
+    //     <div class="flex justify-between items-center p-4 mt-5">
+    //                     <img src="${ImgElement}" alt="" class="w-10">
+    //                     <div>
+    //                         <h3 class="font-bold">${titleElement}</h3>
+    //                         <p class="text-gray-500">${priceElement} tk</p>
+    //                     </div>
+    //                 </div>
+    // ` 
+    // cardContainer.appendChild(newDiv);
+//     })
+// }
+// document.getElementById("clear-btn").addEventListener("click",function(){
+//     const clearAll=getElement("card-container");
+//     clearAll.innerHTML="";
+//     getElement("total-item").innerText=0;
+//     getElement("main-price").innerText=0;
+// })
+
+document.getElementById("product-box").addEventListener("click",function(event){
+    if(event.target.className.includes("add-to-card-btn")){
+        const btn=event.target;
         const ImgElement=btn.parentNode.parentNode.children[0].children[0].src;
-        const titleElement=btn.parentNode.children[0].children;
+        const titleElement=btn.parentNode.children[0].innerText;
+        
+
+
         const priceElement=btn.parentNode.children[1].children[0].innerText;
         
 
@@ -42,5 +85,25 @@ for(const btn of addCardBtns){
         const totalItem=getElement("total-item").innerText
         let finalItem=Number(totalItem)+1;
         getElement("total-item").innerText=finalItem;
-    })
-}
+
+        const cardContainer=getElement("card-container");
+        const newDiv=document.createElement("div");
+        newDiv.innerHTML=`
+        <div class="flex justify-between items-center p-4 mt-5">
+                        <img src="${ImgElement}" alt="" class="w-10">
+                        <div>
+                            <h3 class="font-bold">${titleElement}</h3>
+                            <p class="text-gray-500">${priceElement} tk</p>
+                        </div>
+                    </div>
+    ` 
+    cardContainer.appendChild(newDiv);
+    }
+})
+
+document.getElementById("clear-btn").addEventListener("click",function(){
+    const clearAll=getElement("card-container");
+    clearAll.innerHTML="";
+    getElement("total-item").innerText=0;
+    getElement("main-price").innerText=0;
+})
